@@ -128,7 +128,7 @@ Example Alternative Uses:
  - Non-Native Reading
  - Non-Native Pronunciation
 
-*Note*: SpeedRead allows only alphanumeric (and hyphens, spaces, and apostrophes) entries in the wordlist - no special characters are allowed (excluding space). (*See [Custom Wordlists](#custom-wordlists)
+*Note*: SpeedRead allows only alphanumeric (and hyphens, spaces, and apostrophes) entries in the wordlist - no special characters are allowed (excluding space). (*See [Custom Wordlists](#custom-wordlists)*)
 
 ## Development
 SpeedRead is a prime example of a quick idea turning into a weekend project.  This project is also a great representation of "feature creep."  What started as a quick "app," in less than a few dozen lines of code, turned into a featured-filled game.  Feedback from players and proctors resulted in numerous features rapidly added over a weekend (game saves, different scoring modes, etc.).  As a result, although no bugs are currently known, the overall code quality is definitively "hacky."

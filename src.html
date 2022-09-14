@@ -199,7 +199,8 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <div>
-                            <a role="button" class="btn btn-secondary-outline" href="help.html"><i class="bi bi-patch-question-fill"></i></a>
+                            <a role="button" class="btn btn-secondary-outline" href="help.html" data-bs-toggle="tooltip" data-bs-placement="top"
+                                       data-bs-title="SpeedRead Documentation"><i class="bi bi-patch-question-fill"></i></a>
                         </div>
                         <div>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -292,8 +293,15 @@
                             </table>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div class="modal-footer justify-content-between">
+                        <div>
+                            <a role="button" class="game-stats-image btn btn-secondary-outline" id="game-stats-image"
+                               data-bs-toggle="tooltip" data-bs-placement="top"
+                               data-bs-title="Download an image of Game Stats"><i class="bi bi-image-fill"></i></a>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -304,6 +312,9 @@
 
         <script src="https://cdn.jsdelivr.net/npm/lz-string@1.4.4/libs/lz-string.min.js"
                 integrity="sha256-nRoO8HoupfqozUr7YKBRgHXmdx40Hl/04OSBzv7e7L8=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"
+                integrity="sha256-6H5VB5QyLldKH9oMFUmjxw2uWpPZETQXpCkBaDjquMs=" crossorigin="anonymous"></script>
 
         <script type="text/javascript">
             class SpeedRead {
@@ -672,7 +683,7 @@
                             this.wordlist = this.wordlist.concat(this.wordlists[list]);
                         }.bind(this));
                     } else if (level == "Custom") {
-                        this.wordlist = this.UI.settingsCustomWordlist.value.replace(this.wordlistFilter, '').split(",");
+                        this.updateWordlist(this.UI.settingsCustomWordlist.value);
                         this.UI.gameWordlistUpdateDisplay();
                     } else {
                         this.wordlist = this.wordlists[level];
@@ -1065,6 +1076,17 @@
                     this.updateScoreType(this.scoreType);
                     this.UI.gameStatChangeUpdateDisplay();
                 };
+                
+                updateWordlist(newWordlist) {
+                    if (typeof(newWordlist) === "string") {
+                        this.wordlist = newWordlist.replace(this.wordlistFilter, "").replace(/\,\s*\,/g,",").
+                            replace(/(^\,)/,"").replace(/(\,$)/,"").split(",");
+                    };
+                    this.wordlist = [...new Set(this.wordlist)];
+                    this.wordlist = this.wordlist.sort(function (a, b) {
+                        return a.toLowerCase().localeCompare(b.toLowerCase());
+                    });
+                };
             };
 
             class SpeedReadUI {
@@ -1118,6 +1140,8 @@
                     this.statsTotalWords = document.getElementById("game-stats-words");
                     this.statsWordTable = document.getElementById("game-stats-word-table-body");
 
+                    this.statsImageButton = document.getElementById("game-stats-image");
+                    
                     this.settingsDialogModal = new bootstrap.Modal(this.settingsDialog);
                     this.statsDialogModal = new bootstrap.Modal(this.statsDialog);
 
@@ -1456,7 +1480,7 @@
                                 this.activateCustomStartButton();
                                 this.newGame("Custom");
                                 this.game.pauseGame();
-                                this.game.wordlist = this.settingsCustomWordlist.value.replace(this.game.wordlistFilter, "").split(",");
+                                this.game.updateWordlist(this.settingsCustomWordlist.value);
                                 this.gameWordlistUpdateDisplay();
                             };
                             if (this.settingsGameStateData.value !== "") {                            
@@ -1476,7 +1500,7 @@
                             if (this.settingsCustomWordlist.value !== "") {
                                 this.clearActiveStartButtons();
                                 this.activateCustomStartButton();
-                                this.game.wordlist = this.settingsCustomWordlist.value.replace(this.game.wordlistFilter, "").split(",");
+                                this.game.updateWordlist(this.settingsCustomWordlist.value);
                                 this.gameWordlistUpdateDisplay();
                             };
                             if (parseInt(this.settingsTimeLimit.value) > 0) {
@@ -1589,6 +1613,52 @@
                                 "<td class='text-center'>" + this.game.stats.wordStats[word].skipped + "</td>" +
                                 "<td class='text-end pe-3'>" + timeAverage + "</td>" +
                                 "</tr>";
+                        }.bind(this));
+                    }.bind(this));
+                    
+                    this.hookStatsImage();
+                };
+                
+                hookStatsImage() {
+                    this.statsImageButton.addEventListener("click", function() {
+                        this.statsDialog.querySelectorAll("button, a").forEach(function(button) {
+                            button.style.display = "none";
+                        });
+                        
+                        var timestamp = new Date();
+                        
+                        this.statsDialog.querySelector(".modal-footer")
+                            .insertAdjacentHTML("beforeend",
+                                                "<span class='game-stats-timestamp text-center fs-6 fw-light w-100' id='game-stats-timestamp'>" + 
+                                                timestamp + "</span>");
+                        this.statsDialog.querySelector(".modal-footer")
+                            .insertAdjacentHTML("beforeend",
+                                                "<span class='game-stats-source text-center fs-6 fw-lighter w-100' id='game-stats-source'>Source: " + 
+                                                window.location.href + "</span>");
+                        
+                        this.statsDialog.querySelector(".modal-title").textContent = document.title + " - Game Stats";
+
+                        html2canvas(this.statsDialog.querySelector(".modal-dialog")).then(function(canvas) {
+                            this.statsDialog.querySelector(".modal-title").textContent = "Game Stats";
+                            
+                            this.statsDialog.querySelector("#game-stats-timestamp").remove();
+                            this.statsDialog.querySelector("#game-stats-source").remove();
+                            this.statsDialog.querySelectorAll("button, a").forEach(function(button) {
+                                button.style.display = "";
+                            });
+
+                            var filename = "SpeedRead_Stats_" + timestamp.getMonth() + "_" +
+                                timestamp.getDate() + "_" + timestamp.getFullYear() + "_" +
+                                timestamp.getHours() + "_" + timestamp.getMinutes() + "_" +
+                                timestamp.getSeconds() + ".png";
+                            
+                            var autoDownloadLink = document.createElement('a');
+                            autoDownloadLink.display = "none";
+                            autoDownloadLink.href = canvas.toDataURL(); 
+                            autoDownloadLink.download = filename;
+                            document.body.appendChild(autoDownloadLink);
+                            autoDownloadLink.click();
+                            document.body.removeChild(autoDownloadLink);
                         }.bind(this));
                     }.bind(this));
                 };
