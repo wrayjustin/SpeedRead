@@ -138,7 +138,11 @@ The application is built using the following technologies:
  - CSS3
  - Vanilla JavaScript (ES6)
  - Bootstrap (5.2)
+ - Bootstrap Icons (1.9)
+ - Bootstrap Dark (1.1)
+ - DarkmodeJS (1.1)
  - LZString (1.4)
+ - HTML2Canvas (1.4)
 
 ## License & Rights
 You are free to play the game (including in a classroom setting).  You may store an unmodified copy for offline play.  All other rights are reserved.
