@@ -1,7 +1,7 @@
 # SpeedRead
 SpeedRead by Justin M. Wray
 
-https://www.justinwray.com
+https://wrayjustin.github.io/SpeedRead/ | https://www.justinwray.com
 
 All Rights Reserved
 
