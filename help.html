@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SpeedRead | Documentation</title>
+  <title>SpeedRead - Documentation</title>
   <link rel="stylesheet" href="https://stackedit.io/style.css" />
 </head>
 
@@ -21,7 +21,7 @@
             <li><a href="#license--rights">License & Rights</a></li>
           </ul>
         </li>
-        <li><a href=".">&#60; Return to Game</a>
+        <li><a href=".">&#60; Return to Game</a></li>
       </ul>
 
     </div>
@@ -32,14 +32,14 @@
       <p>
         <a href=".">&#60; Return to Game</a>
       </p>
-      <p>SpeedRead by Justin M. Wray<br>
-        <a href="https://wrayjustin.github.io/SpeedRead/">https://wrayjustin.github.io/SpeedRead/</a> | <a
-          href="https://www.justinwray.com">https://www.justinwray.com</a><br>
-        All Rights Reserved
-      </p>
+      <p>SpeedRead by Justin M. Wray</p>
+      <p><a href="https://wrayjustin.github.io/SpeedRead/">https://wrayjustin.github.io/SpeedRead/</a> | <a
+          href="https://www.justinwray.com">https://www.justinwray.com</a></p>
+      <p>All Rights Reserved</p>
       <h2 id="about">About</h2>
       <p>SpeedRead is a web-based, gamified, sight word learning program. SpeedRead is based on the “Dolch” Sight Word
         list and provides default words based on the target education level.</p>
+      <p><img src="screenshots/SpeedRead-Demo.gif" alt="Demo Video" title="Demo Video"></p>
       <h3 id="features">Features</h3>
       <ul>
         <li>Score Tracking &amp; Modes (<em>See <a href="#scoring-types">Scoring Types</a></em>)</li>
@@ -55,9 +55,10 @@
         <li>Custom Word Lists (<em>See <a href="#custom-wordlists">Custom Wordlists</a> | <a href="#other-uses">Other
               Uses</a></em>)</li>
         <li>Customizable Settings (<em>See <a href="#game-settings">Game Settings</a></em>)</li>
+        <li>Multiple Themes/Visuals (<em>See <a href="#game-themes">Game Settings</a></em>)</li>
         <li>Keyboard Shortcuts (<em>See <a href="#keyboard-shortcuts">Keyboard Shortcuts</a></em>)</li>
         <li>Multi-Platform Support (<em>See <a href="#requirments">Requirments</a></em>)</li>
-        <li>Full Offline Support (<em>See <a href="#requirments">Requirments</a></em>)</li>
+        <li>Full Offline Support (<em>See <a href="#requirements">Requirments</a></em>)</li>
       </ul>
       <h2 id="details">Details</h2>
       <h3 id="word-lists">Word Lists</h3>
@@ -132,8 +133,7 @@
       <h4 id="time-based">Time-Based</h4>
       <p>Scoring is based on speed, with points added for correct answers and deducted for skipped words. The points
         awarded, or subtracted, are based on the maximum number of seconds spent up to the time limit set.
-        <em>[Competitive Mode]</em>
-      </p>
+        <em>[Competitive Mode]</em></p>
       <h3 id="game-settings">Game Settings</h3>
       <p>SpeedRead allows for the customization of various game settings. The following settings are customizable:</p>
 
@@ -149,17 +149,17 @@
           <tr>
             <td>Game Score Type</td>
             <td>Determines the Scoring Metric (<em>See <a href="#scoring-types">Scoring Types</a></em>)</td>
-            <td>Plus-Minus</td>
+            <td><code>Plus-Minus</code></td>
           </tr>
           <tr>
             <td>Round Time Limit</td>
             <td>Time before the word is skipped automatically. Also used as the basis for time warnings.</td>
-            <td>30</td>
+            <td><code>30</code></td>
           </tr>
           <tr>
             <td>Max Stars Per Round</td>
             <td>Maximum amount of stars earned per round; used as the basis for stars awarded for a correct answer.</td>
-            <td>5</td>
+            <td><code>5</code></td>
           </tr>
           <tr>
             <td>Custom Game Wordlist</td>
@@ -170,6 +170,11 @@
             <td>Custom State Data</td>
             <td>(<em>See <a href="#game-save-data">Game Save Data</a></em>)</td>
             <td>–</td>
+          </tr>
+          <tr>
+            <td>Game Theme</td>
+            <td>Visual themes for the interface (<em>See <a href="#game-themes">Game Settings</a></em>)</td>
+            <td><code>light</code></td>
           </tr>
           <tr>
             <td>Advanced Settings</td>
@@ -223,7 +228,7 @@
         “Game Save #1” and the other into “Game Save #2.” You can only merge two games at a time, but you can run the
         operation multiple times. Click “Merge Data.” The combined game will be loaded, and you can save the new data
         through the traditional methods.</p>
-      <h3 id="requirments">Requirments</h3>
+      <h3 id="requirements">Requirements</h3>
       <p>SpeedRead is a single file that can be played (and stored) entirely offline. However, it requires some
         third-party dependencies and an initial internet connection when first loaded. Additionally, the browser must
         support ~2015-level features and functionality; use a new(ish) browser version for best results.</p>
@@ -252,9 +257,37 @@
       <p>SpeedRead has also been tested via “Casting” from mobile and desktop applications to TV screens, via Chrome
         Casting, AirPlay, etc.</p>
       <h3 id="custom-wordlists">Custom Wordlists</h3>
-      <p>SpeedRead allows for custom wordlists to be defined. All wordlists must be comma seperated and may only contain
+      <p>SpeedRead allows for custom wordlists to be defined. All wordlists must be comma separated and may only contain
         alphanumeric, hyphens, spaces, and apostrophes.</p>
       <p>Updates to the custom wordlist are applied immediately upon the settings save.</p>
+      <h3 id="game-themes">Game Themes</h3>
+      <p>SpeedRead contains a few different visual themes. The theme can be changed from the settings dialog and updated
+        immediately.</p>
+      <h4 id="light-default">Light (Default)</h4>
+      <p>The default theme is a “Light” color mode, with minimal distractions.<br>
+        <img src="screenshots/SpeedRead-Light.png" alt="Light Theme" title="Light Theme">
+      </p>
+      <h4 id="dark">Dark</h4>
+      <p>A sane inversion of the default mode, the “Dark” mode provides light text on dark backgrounds with minimal
+        distractions.<br>
+        <img src="screenshots/SpeedRead-Dark.png" alt="Dark Theme" title="Dark Theme">
+      </p>
+      <h4 id="chalkboard">Chalkboard</h4>
+      <p>Designed to mimic a school chalkboard setting, including “decorations” of an apple, eraser, and chalk.<br>
+        <img src="screenshots/SpeedRead-Chalkboard.png" alt="Chalkboard Theme" title="Chalkboard Theme">
+      </p>
+      <h4 id="chalkboard-dark">Chalkboard Dark</h4>
+      <p>A dark-mode version of the schoolhouse chalkboard design.<br>
+        <img src="screenshots/SpeedRead-Chalkboard-Dark.png" alt="Chalkboard-Dark Theme" title="Chalkboard-Dark Theme">
+      </p>
+      <h4 id="prince">Prince</h4>
+      <p>A blue-colored based theme.<br>
+        <img src="screenshots/SpeedRead-Prince.png" alt="Prince Theme" title="Prince Theme">
+      </p>
+      <h4 id="princess">Princess</h4>
+      <p>A pink/purple-colored theme.<br>
+        <img src="screenshots/SpeedRead-Princess.png" alt="Princess Theme" title="Princess Theme">
+      </p>
       <h3 id="other-uses">Other Uses</h3>
       <p>Although SpeedRead was designed for those just learning to read English, and to study “Sight Words” in
         particular, the flexibility of Custom Wordlists allows for a wider range of usage.</p>
@@ -291,7 +324,11 @@
         <li>CSS3</li>
         <li>Vanilla JavaScript (ES6)</li>
         <li>Bootstrap (5.2)</li>
+        <li>Bootstrap Icons (1.9)</li>
+        <li>Bootstrap Dark (1.1)</li>
+        <li>DarkmodeJS (1.1)</li>
         <li>LZString (1.4)</li>
+        <li>HTML2Canvas (1.4)</li>
       </ul>
       <h2 id="license--rights">License &amp; Rights</h2>
       <p>You are free to play the game (including in a classroom setting). You may store an unmodified copy for offline
