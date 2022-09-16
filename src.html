@@ -104,15 +104,22 @@
         <section class="game-main container-fluid flex-grow-1 overflow-auto h-100 px-5">
             <div class="game-main-board d-flex border rounded border-secondary bg-light text-center align-self-center h-100"
                 id="game-main-board">
-                <div class="align-self-center text-center w-100">
-                    <span class="game-word fw-bold fade show">Ready?</span>
-                    <span class="game-start-help-text">
-                        <br>To start a game, select a level in the menu above!
-                        <br><span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" data-bs-title="The wordlists are based on the Dolch words, seperated by target education level.<br><br>
-                                <p>Keyboard Shortcuts:<ul class='text-start'><li>SPACE: Pause/Resume</li><li>LEFT-ARROW: Skip</li><li>RIGHT-ARROW: Correct</li></ul>
-                                <br>Created by Justin M. Wray. All Rights Reserved."><i
-                                class="bi bi-info-square-fill h-100"></i></span>
-                    </span>
+                <div class="game-board-inside d-flex h-100 w-100 align-self-center align-items-center"
+                    id="game-board-inside">
+                    <div class="align-self-center text-center w-100">
+                        <span class="game-word fw-bold fade show">Ready?</span>
+                        <span class="game-start-help-text">
+                            <br>To start a game, select a level in the menu above!
+                            <br><span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                                data-bs-title="The wordlists are based on the Dolch words, seperated by target education level.<br><br>
+                                    <p>Keyboard Shortcuts:<ul class='text-start'><li>SPACE: Pause/Resume</li><li>LEFT-ARROW: Skip</li><li>RIGHT-ARROW: Correct</li></ul>
+                                    <br>Created by Justin M. Wray. All Rights Reserved."><i
+                                    class="bi bi-info-square-fill h-100"></i></span>
+                        </span>
+                        <div class="game-board-decorations d-none position-absolute bottom-0"
+                            id="game-board-decorations">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1264,6 +1271,8 @@
 
                 this.gameMainContainer = document.querySelector(".game-main");
                 this.gameBoard = document.getElementById("game-main-board");
+                this.gameBoardInside = document.getElementById("game-board-inside");
+                this.gameBoardDecorations = document.getElementById("game-board-decorations");
                 this.gameWordDisplay = document.querySelectorAll(".game-word")[0];
                 this.gameRoundTimerDisplay = document.querySelectorAll(".game-round-timer")[0];
                 this.gameWinStreakDisplay = document.querySelectorAll(".game-win-streak")[0];
@@ -1914,10 +1923,17 @@
                 switch (style) {
                     case "chalkboard":
                         this.gameBoard.style.setProperty("border", "10px solid #C19A6B", "important");
+                        this.gameBoard.style.setProperty("border-bottom", "15px solid #C19A6B", "important");
                         this.gameBoard.style.setProperty("background", "radial-gradient(#495A4C, transparent)", "important");
                         this.gameBoard.style.setProperty("background-color", "#274C43", "important");
                         this.gameBoard.style.setProperty("color", "#e0dbd1", "important");
-                        this.gameBoard.style.setProperty("box-shadow", "5px 5px var(--bs-gray-400)", "important");
+                        this.gameBoard.style.setProperty("box-shadow", "5px 5px 5px 2px rgb(0 0 0 / 50%)", "important");
+                        this.gameBoardInside.style.setProperty("box-shadow", "inset 5px 5px 10px 5px rgba(0,0,0,0.25)", "important");
+                        this.gameBoardInside.style.setProperty("position", "relative", "important");
+                        this.gameBoardDecorations.classList.remove("d-none");
+                        this.gameBoardDecorations.innerHTML = "<i class='bi bi-apple text-danger fs-3'></i><i class='bi bi-usb-fill text-dark fs-1 position-relative start-end align-text-bottom fs-1' style='bottom: -10px; text-shadow: 2px 2px 2px rgb(0 0 0 / 50%);'></i><span class='text-white ps-2 fs-1' style='line-height: 0;'>_</span>";
+                        this.gameBoardDecorations.style.setProperty("left", "25%", "important");
+                        this.gameBoardDecorations.style.setProperty("text-shadow", "2px 2px 2px rgb(0 0 0 / 50%)", "important");
                         this.gameMainContainer.style.setProperty("padding-bottom", "10px", "important");
                         break;
                     case "prince":
@@ -1926,6 +1942,12 @@
                         this.gameBoard.style.setProperty("background-color", "#86B6FE", "important");
                         this.gameBoard.style.setProperty("color", "");
                         this.gameBoard.style.setProperty("box-shadow", "");
+                        this.gameBoardInside.style.setProperty("box-shadow", "inset 5px 5px 10px 5px rgba(0,0,0,0.25)", "important");
+                        this.gameBoardInside.style.setProperty("position", "relative", "important");
+                        this.gameBoardDecorations.classList.remove("d-none");
+                        this.gameBoardDecorations.innerHTML = "<i class='bi bi-truck text-primary fs-1 position-relative start-end align-text-bottom' style='bottom: -5px;'></i>";
+                        this.gameBoardDecorations.style.setProperty("left", "25%", "important");
+                        this.gameBoardDecorations.style.setProperty("text-shadow", "2px 2px 2px rgb(0 0 0 / 50%)", "important");
                         this.gameMainContainer.style.setProperty("padding-bottom", "");
                         break;
                     case "princess":
@@ -1934,6 +1956,12 @@
                         this.gameBoard.style.setProperty("background-color", "#ffdfe5", "important");
                         this.gameBoard.style.setProperty("color", "");
                         this.gameBoard.style.setProperty("box-shadow", "");
+                        this.gameBoardInside.style.setProperty("box-shadow", "inset 5px 5px 10px 5px rgba(0,0,0,0.25)", "important");
+                        this.gameBoardInside.style.setProperty("position", "relative", "important");
+                        this.gameBoardDecorations.classList.remove("d-none");
+                        this.gameBoardDecorations.innerHTML = "<i class='bi bi-hearts text-danger fs-1 position-relative start-end align-text-bottom'></i>";
+                        this.gameBoardDecorations.style.setProperty("left", "25%", "important");
+                        this.gameBoardDecorations.style.setProperty("text-shadow", "2px 2px 2px rgb(0 0 0 / 50%)", "important");
                         this.gameMainContainer.style.setProperty("padding-bottom", "");
                         break;
                     default:
@@ -1942,6 +1970,12 @@
                         this.gameBoard.style.setProperty("background-color", "");
                         this.gameBoard.style.setProperty("color", "");
                         this.gameBoard.style.setProperty("box-shadow", "");
+                        this.gameBoardInside.style.setProperty("box-shadow", "");
+                        this.gameBoardInside.style.setProperty("position", "");
+                        this.gameBoardDecorations.classList.add("d-none");
+                        this.gameBoardDecorations.innerHTML = "";
+                        this.gameBoardDecorations.style.setProperty("left", "");
+                        this.gameBoardDecorations.style.setProperty("text-shadow", "");
                         this.gameMainContainer.style.setProperty("padding-bottom", "");
                         break;
                 };

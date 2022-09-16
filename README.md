@@ -8,19 +8,22 @@ All Rights Reserved
 ## About
 SpeedRead is a web-based, gamified, sight word learning program.  SpeedRead is based on the "Dolch" Sight Word list and provides default words based on the target education level. 
 
+![Demo Video](screenshots/SpeedRead-Demo.gif "Demo Video")
+
 ### Features
  - Score Tracking & Modes (*See [Scoring Types](#scoring-types)*)
  - Detailed Statistics
-	 - Overall Scores, Speed, Streaks, etc.
-	 - Per-Word Accuracy, Speed, etc.
+     - Overall Scores, Speed, Streaks, etc.
+     - Per-Word Accuracy, Speed, etc.
  - Sound Effects and Reading of Skipped Words
  - Game Saves / Resume / Merge (*See [Game Save Data](#game-save-data)*)
  - Default Word Lists, by Grade Level (*See [Word Lists](#word-lists)*)
  - Custom Word Lists (*See [Custom Wordlists](#custom-wordlists) | [Other Uses](#other-uses)*)
  - Customizable Settings (*See [Game Settings](#game-settings)*)
+ - Multiple Themes/Visuals (*See [Game Settings](#game-themes)*)
  - Keyboard Shortcuts (*See [Keyboard Shortcuts](#keyboard-shortcuts)*)
  - Multi-Platform Support (*See [Requirments](#requirments)*)
- - Full Offline Support (*See [Requirments](#requirments)*)
+ - Full Offline Support (*See [Requirments](#requirements)*)
 
 ## Details
 
@@ -52,11 +55,12 @@ Scoring is based on speed, with points added for correct answers and deducted fo
 SpeedRead allows for the customization of various game settings.  The following settings are customizable:
 | Action | Key | Default |
 |--|--|--|
-| Game Score Type | Determines the Scoring Metric (*See [Scoring Types](#scoring-types)*) | Plus-Minus |
-| Round Time Limit | Time before the word is skipped automatically.  Also used as the basis for time warnings. | 30 |
-| Max Stars Per Round | Maximum amount of stars earned per round; used as the basis for stars awarded for a correct answer. | 5 |
+| Game Score Type | Determines the Scoring Metric (*See [Scoring Types](#scoring-types)*) | `Plus-Minus` |
+| Round Time Limit | Time before the word is skipped automatically.  Also used as the basis for time warnings. | `30` |
+| Max Stars Per Round | Maximum amount of stars earned per round; used as the basis for stars awarded for a correct answer. | `5` |
 | Custom Game Wordlist | (*See [Custom Wordlists](#custom-wordlists)*) | -- |
 | Custom State Data | (*See [Game Save Data](#game-save-data)*) | -- |
+| Game Theme | Visual themes for the interface (*See [Game Settings](#game-themes)*) | `light` |
 | Advanced Settings | (*See [Game Save Data](#game-save-data)*) | -- |
 
 Saved changes to these settings will take effect immediately and automatically update relevant statistics.
@@ -83,7 +87,7 @@ Paste previously saved data into the "Game State Data" field of the "Game Settin
 #### To Merge
 Click and expand the "Advanced Settings" under, and enter one saved game (the desired "Game State Data") into "Game Save #1"  and the other into "Game Save #2."  You can only merge two games at a time, but you can run the operation multiple times.  Click "Merge Data."  The combined game will be loaded, and you can save the new data through the traditional methods.
 
-### Requirments
+### Requirements
 SpeedRead is a single file that can be played (and stored) entirely offline.  However, it requires some third-party dependencies and an initial internet connection when first loaded.  Additionally, the browser must support ~2015-level features and functionality; use a new(ish) browser version for best results.
 
 SpeedRead should support (and has limited testing on):
@@ -108,9 +112,36 @@ SpeedRead may work on older versions of the above or other alternative browsers 
 SpeedRead has also been tested via "Casting" from mobile and desktop applications to TV screens, via Chrome Casting, AirPlay, etc.
 
 ### Custom Wordlists
-SpeedRead allows for custom wordlists to be defined.  All wordlists must be comma seperated and may only contain alphanumeric, hyphens, spaces, and apostrophes.
+SpeedRead allows for custom wordlists to be defined.  All wordlists must be comma separated and may only contain alphanumeric, hyphens, spaces, and apostrophes.
 
 Updates to the custom wordlist are applied immediately upon the settings save.
+
+### Game Themes
+SpeedRead contains a few different visual themes.  The theme can be changed from the settings dialog and updated immediately.
+
+#### Light (Default)
+The default theme is a "Light" color mode, with minimal distractions.
+![Light Theme](screenshots/SpeedRead-Light.png "Light Theme")
+
+#### Dark
+A sane inversion of the default mode, the "Dark" mode provides light text on dark backgrounds with minimal distractions.
+![Dark Theme](screenshots/SpeedRead-Dark.png "Dark Theme")
+
+#### Chalkboard
+Designed to mimic a school chalkboard setting, including "decorations" of an apple, eraser, and chalk.
+![Chalkboard Theme](screenshots/SpeedRead-Chalkboard.png "Chalkboard Theme")
+
+#### Chalkboard Dark
+A dark-mode version of the schoolhouse chalkboard design.
+![Chalkboard-Dark Theme](screenshots/SpeedRead-Chalkboard-Dark.png "Chalkboard-Dark Theme")
+
+#### Prince
+A blue-colored based theme.
+![Prince Theme](screenshots/SpeedRead-Prince.png "Prince Theme")
+
+#### Princess
+A pink/purple-colored theme.
+![Princess Theme](screenshots/SpeedRead-Princess.png "Princess Theme")
 
 ### Other Uses
 Although SpeedRead was designed for those just learning to read English, and to study "Sight Words" in particular, the flexibility of Custom Wordlists allows for a wider range of usage.
@@ -121,9 +152,9 @@ Additionally, SpeedRead can be useful, for any age, for learning a non-native la
 
 Example Alternative Uses:
  - Memorizing/Reciting/Studying Data and Facts
-	 - Laws
-	 - Bible Verses
-	 - Technical Terms / Figures
+     - Laws
+     - Bible Verses
+     - Technical Terms / Figures
  - Proctored Flash Cards / Studying
  - Non-Native Reading
  - Non-Native Pronunciation
